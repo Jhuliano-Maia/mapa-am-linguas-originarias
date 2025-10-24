@@ -4,22 +4,53 @@ body {
   padding: 0;
   font-family: sans-serif;
   display: flex;
-  height: 100vh; /* ESSA LINHA É CRUCIAL */
+  /* Por padrão, mantemos o layout lado a lado para telas grandes */
+  flex-direction: row;
+  height: 100vh;
 }
 
 #map {
-  flex-grow: 1; /* E ESSA TAMBÉM */
+  flex-grow: 1;
 }
 
 #info-panel {
+  /* Largura padrão para telas grandes */
   width: 300px;
   background-color: #f8f8f8;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-  overflow-y: auto; /* Adiciona rolagem se o conteúdo for muito grande */
-  display: none; /* Inicia o painel escondido */
+  overflow-y: auto;
+  /* Usamos 'block' aqui para que possamos controlar o 'display: none' via JS */
+  display: none;
 }
 
 #info-panel h2 {
   margin-top: 0;
+}
+
+/* RESPONSIVIDADE: Média Query para Telas Pequenas
+/* O layout muda quando a largura da tela é menor ou igual a 768px */
+@media (max-width: 768px) {
+  body {
+    /* Muda a direção do layout de linha para coluna */
+    flex-direction: column;
+    /* A altura total da tela agora será compartilhada entre mapa e painel */
+    height: 100vh;
+  }
+
+  #map {
+    /* O mapa ocupa uma porção da tela (ex: 70% da altura) */
+    height: 70vh;
+    /* Garante que ele ocupe 100% da largura */
+    width: 100%;
+  }
+
+  #info-panel {
+    /* O painel ocupa o restante da largura e altura */
+    width: 100%;
+    /* Ocupa 30% da altura da tela (100vh - 70vh) */
+    height: 30vh;
+    /* Remove a sombra lateral */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  }
 }
