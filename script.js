@@ -19,12 +19,32 @@ function showInfoPanel(properties) {
   // Cria o conteúdo HTML com base nas propriedades do ponto
   const htmlContent = `
     <h2>${properties.nome_aldei || "Informações do Ponto"}</h2>
+
     <p><strong>Município:</strong> ${properties.nommunic || "N/A"}</p>
-    <p><strong>Coordenacão Regional:</strong> ${properties.nome_cr || "N/A"}</p>
+    <p><strong>UF:</strong> ${properties.nomuf || "N/A"}</p>
+    <p><strong>Coordenação Regional:</strong> ${properties.nome_cr || "N/A"}</p>
     <p><strong>Data de Cadastro:</strong> ${properties.data_cadas || "N/A"}</p>
     <p><strong>Código da Aldeia:</strong> ${properties.cod_aldeia || "N/A"}</p>
+    <p><strong>Código TI:</strong> ${properties.cod_ti || "N/A"}</p>
+    <p><strong>Código Município:</strong> ${properties.cod_munici || "N/A"}</p>
+  
     <p><strong>Latitude:</strong> ${properties.coord_lat || "N/A"}</p>
     <p><strong>Longitude:</strong> ${properties.coord_long || "N/A"}</p>
+  
+    <hr>
+  
+    <h3>Dados Linguísticos</h3>
+  
+    <p><strong>Língua:</strong> ${properties.lingua || "N/A"}</p>
+    <p><strong>Família Linguística:</strong> ${properties.familia_linguistica || "N/A"}</p>
+    <p><strong>Tronco Linguístico:</strong> ${properties.tronco_linguistico || "N/A"}</p>
+    <p><strong>Quantidade de Falantes:</strong> ${properties.quantidade_de_falantes || "N/A"}</p>
+    <p><strong>Total de Falantes:</strong> ${properties.quantidade_total_de_falantes || "N/A"}</p>
+    <p><strong>Vitalidade:</strong> ${properties.vitalidade || "N/A"}</p>
+    <p><strong>Sinônimo:</strong> ${properties.sinonimo || "N/A"}</p>
+    <p><strong>Código ISO:</strong> ${properties.codigo_iso || "N/A"}</p>
+    <p><strong>Áreas Etnográficas:</strong> ${properties.areas_etnograficas || "N/A"}</p>
+    <p><strong>Núcleo:</strong> ${properties.nucleo || "N/A"}</p>
   `;
 
   // Insere o conteúdo no painel
