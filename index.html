@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mapa das Aldeias Indígenas</title>
+
     <link rel="stylesheet" href="style.css" />
 
     <link
@@ -12,6 +13,7 @@
     />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+    <!-- Marker Cluster -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
@@ -21,9 +23,17 @@
       href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
     />
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-control-search/dist/leaflet-control-search.min.css"
+    />
+    <script src="https://unpkg.com/leaflet-control-search/dist/leaflet-control-search.min.js"></script>
   </head>
+
   <body>
     <div id="map"></div>
+
     <div id="info-panel">
       <div id="info-content">
         <h2>Informações do Ponto</h2>
