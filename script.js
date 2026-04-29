@@ -2,8 +2,7 @@ const map = L.map("map").setView([-3.107, -60.021], 5);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
-  attribution:
-    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
 function showInfoPanel(properties) {
@@ -67,9 +66,7 @@ fetch("aldeias_pontos_site.geojson")
 
     searchControl.onAdd = function () {
       const div = L.DomUtil.create("div", "search-box");
-
       div.innerHTML = `<input id="searchBox" type="text" placeholder="Buscar aldeia..." />`;
-
       return div;
     };
 
