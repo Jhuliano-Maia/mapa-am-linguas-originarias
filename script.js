@@ -10,13 +10,10 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 // Função para mostrar o painel de informações
 function showInfoPanel(properties) {
-  // Torna o painel visível
   document.getElementById("info-panel").style.display = "block";
 
-  // Seleciona o elemento onde o conteúdo será inserido
   const contentDiv = document.getElementById("info-content");
 
-  // Cria o conteúdo HTML com base nas propriedades do ponto
   const htmlContent = `
     <h2>${properties.nome_aldei || "Informações do Ponto"}</h2>
 
@@ -27,14 +24,14 @@ function showInfoPanel(properties) {
     <p><strong>Código da Aldeia:</strong> ${properties.cod_aldeia || "N/A"}</p>
     <p><strong>Código TI:</strong> ${properties.cod_ti || "N/A"}</p>
     <p><strong>Código Município:</strong> ${properties.cod_munici || "N/A"}</p>
-  
+
     <p><strong>Latitude:</strong> ${properties.coord_lat || "N/A"}</p>
     <p><strong>Longitude:</strong> ${properties.coord_long || "N/A"}</p>
-  
+
     <hr>
-  
+
     <h3>Dados Linguísticos</h3>
-  
+
     <p><strong>Língua:</strong> ${properties.lingua || "N/A"}</p>
     <p><strong>Família Linguística:</strong> ${properties.familia_linguistica || "N/A"}</p>
     <p><strong>Tronco Linguístico:</strong> ${properties.tronco_linguistico || "N/A"}</p>
@@ -47,7 +44,6 @@ function showInfoPanel(properties) {
     <p><strong>Núcleo:</strong> ${properties.nucleo || "N/A"}</p>
   `;
 
-  // Insere o conteúdo no painel
   contentDiv.innerHTML = htmlContent;
 }
 
@@ -55,21 +51,18 @@ function showInfoPanel(properties) {
 fetch("aldeias_pontos_site.geojson")
   .then((response) => {
     if (!response.ok) {
-      throw new Error(
-        "Erro ao carregar o arquivo GeoJSON. Verifique o nome e a localização."
-      );
+      throw new Error("Erro ao carregar o GeoJSON.");
     }
     return response.json();
   })
   .then((data) => {
-    // 1. CRIA O GRUPO DE CLUSTERING (Agrupamento)
+    // Cluster
     const markers = L.markerClusterGroup();
 
-    // 2. CRIA A CAMADA GEOJSON E ADICIONA O EVENTO DE CLIQUE
+    // GeoJSON layer
     const geoJsonLayer = L.geoJSON(data, {
       onEachFeature: function (feature, layer) {
-        // Adiciona um evento de clique em cada ponto
-        layer.on("click", function (e) {
+        layer.on("click", function () {
           showInfoPanel(feature.properties);
         });
       },
@@ -85,18 +78,22 @@ fetch("aldeias_pontos_site.geojson")
       },
     });
 
-    // 3. ADICIONA A CAMADA GEOJSON AO GRUPO DE CLUSTERING
     markers.addLayer(geoJsonLayer);
-
-    // 4. ADICIONA O GRUPO DE CLUSTERING AO MAPA
     map.addLayer(markers);
 
-    // Centraliza o mapa na área de todos os pontos usando o grupo de marcadores
     map.fitBounds(markers.getBounds());
+
+    const searchControl = new L.Control.Search({
+      layer: geoJsonLayer,
+      propertyName: "nome_aldei",
+      initial: false,
+      zoom: 14,
+      marker: false,
+    });
+
+    map.addControl(searchControl);
   })
   .catch((error) => {
     console.error("Erro:", error);
-    alert(
-      "Não foi possível carregar os dados. Verifique o console do navegador."
-    );
+    alert("Não foi possível carregar os dados.");
   });
