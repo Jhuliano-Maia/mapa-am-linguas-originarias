@@ -9440,7 +9440,17 @@
         "nomuf": "Amazonas",
         "undadm_cod": 30202001878.0,
         "coord_lat": -7.6998472222199998,
-        "coord_long": -66.883361111100001
+        "coord_long": -66.883361111100001,
+        "lingua": "Apurinã",
+        "quantidade_de_falantes": 2,
+        "quantidade_total_de_falantes": "n/a",
+        "vitalidade": "n/a",
+        "sinonimo": "n/a",
+        "tronco_linguistico": "n/a",
+        "familia_linguistica": "Aruak",
+        "codigo_iso": "APU",
+        "areas_etnograficas": "Juruá-Purus",
+        "nucleo": "C",
       },
       "geometry": {
         "type": "Point",
