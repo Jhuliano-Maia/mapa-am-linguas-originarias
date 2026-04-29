@@ -75,13 +75,13 @@ fetch("aldeias_pontos_site.geojson")
     setTimeout(() => {
       const input = document.getElementById("searchBox");
 
-      input.addEventListener("keyup", function () {
-        const value = this.value.toLowerCase();
+      // Função que realiza a busca
+      function search() {
+        const value = input.value.toLowerCase();
 
         markers.eachLayer((cluster) => {
           cluster.eachLayer((layer) => {
-            const nome =
-              layer.feature?.properties?.nome_aldei?.toLowerCase();
+            const nome = layer.feature?.properties?.nome_aldei?.toLowerCase();
 
             if (nome && nome.includes(value)) {
               layer.setStyle({ fillColor: "red", radius: 7 });
@@ -90,6 +90,16 @@ fetch("aldeias_pontos_site.geojson")
             }
           });
         });
+      }
+
+      // Chama a função de busca ao digitar
+      input.addEventListener("keyup", search);
+
+      // Chama a função de busca ao pressionar Enter
+      input.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          search();
+        }
       });
     }, 300);
   })
