@@ -9,6 +9,20 @@ body {
   height: 100vh;
 }
 
+.search-box {
+  background: white;
+  padding: 6px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#searchBox {
+  width: 180px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 #map {
   flex-grow: 1;
 }
