@@ -83,10 +83,10 @@ fetch("aldeias_pontos_site.geojson")
           cluster.eachLayer((layer) => {
             const nome = layer.feature?.properties?.nome_aldei?.toLowerCase();
 
+            // Verifica se o nome da aldeia contém o valor digitado
             if (nome && nome.includes(value)) {
-              layer.setStyle({ fillColor: "red", radius: 7 });
-            } else {
-              layer.setStyle({ fillColor: "#ff7800", radius: 5 });
+              // Dá zoom no ponto encontrado
+              map.setView(layer.getLatLng(), 14); // Alvo o ponto com zoom 14
             }
           });
         });
