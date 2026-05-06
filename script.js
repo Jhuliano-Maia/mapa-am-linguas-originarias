@@ -11,24 +11,37 @@ function showInfoPanel(properties) {
   const contentDiv = document.getElementById("info-content");
 
   contentDiv.innerHTML = `
-    <h2>${properties.nome_aldei || "Informações do Ponto"}</h2>
-    <p><strong>Município:</strong> ${properties.nommunic || "N/A"}</p>
-    <p><strong>UF:</strong> ${properties.nomuf || "N/A"}</p>
-    <p><strong>Coordenação Regional:</strong> ${properties.nome_cr || "N/A"}</p>
-    <p><strong>Data de Cadastro:</strong> ${properties.data_cadas || "N/A"}</p>
-    <p><strong>Código da Aldeia:</strong> ${properties.cod_aldeia || "N/A"}</p>
-    <p><strong>Código TI:</strong> ${properties.cod_ti || "N/A"}</p>
-    <p><strong>Código Município:</strong> ${properties.cod_munici || "N/A"}</p>
-    <p><strong>Latitude:</strong> ${properties.coord_lat || "N/A"}</p>
-    <p><strong>Longitude:</strong> ${properties.coord_long || "N/A"}</p>
-    <hr>
-    <h3>Dados Linguísticos</h3>
-    <p><strong>Língua:</strong> ${properties.lingua || "N/A"}</p>
-    <p><strong>Família:</strong> ${properties.familia_linguistica || "N/A"}</p>
-    <p><strong>Tronco:</strong> ${properties.tronco_linguistico || "N/A"}</p>
-    <p><strong>Falantes:</strong> ${properties.quantidade_de_falantes || "N/A"}</p>
-    <p><strong>ISO:</strong> ${properties.codigo_iso || "N/A"}</p>
-  `;
+  <h2>${properties.nome_aldei || "Informações do Ponto"}</h2>
+  <p><strong>Município:</strong> ${properties.nommunic || "N/A"}</p>
+  <p><strong>UF:</strong> ${properties.nomuf || "N/A"}</p>
+  <p><strong>Coordenação Regional:</strong> ${properties.nome_cr || "N/A"}</p>
+  <p><strong>Data de Cadastro:</strong> ${properties.data_cadas || "N/A"}</p>
+  <p><strong>Código da Aldeia:</strong> ${properties.cod_aldeia || "N/A"}</p>
+  <p><strong>Código TI:</strong> ${properties.cod_ti || "N/A"}</p>
+  <p><strong>Código Município:</strong> ${properties.cod_munici || "N/A"}</p>
+  <p><strong>Latitude:</strong> ${properties.coord_lat || "N/A"}</p>
+  <p><strong>Longitude:</strong> ${properties.coord_long || "N/A"}</p>
+
+  <hr>
+  <h3>Dados Territoriais</h3>
+  <p><strong>Terra Indígena:</strong> ${properties.terra_indigena || "N/A"}</p>
+  <p><strong>Área Etnográfica:</strong> ${properties.area_etnografica || "N/A"}</p>
+  <p><strong>Núcleo:</strong> ${properties.nucleo || "N/A"}</p>
+
+  <hr>
+  <h3>Dados Linguísticos</h3>
+  <p><strong>Língua:</strong> ${properties.lingua || "N/A"}</p>
+  <p><strong>Família:</strong> ${properties.familia_linguistica || "N/A"}</p>
+  <p><strong>Tronco:</strong> ${properties.tronco_linguistico || "N/A"}</p>
+  <p><strong>Falantes:</strong> ${properties.quantidade_de_falantes || "N/A"}</p>
+  <p><strong>Falantes Total:</strong> ${properties.falantes_total || "N/A"}</p>
+  <p><strong>Vitalidade da Língua:</strong> ${properties.vitalidade_lingua || "N/A"}</p>
+  <p><strong>ISO:</strong> ${properties.codigo_iso || "N/A"}</p>
+
+  <hr>
+  <h3>Outros</h3>
+  <p><strong>Sinônimos:</strong> ${properties.sinonimos || "N/A"}</p>
+`;
 }
 
 fetch("aldeias_pontos_site.geojson")
